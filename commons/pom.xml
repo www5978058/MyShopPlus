@@ -13,11 +13,16 @@
     <packaging>pom</packaging>
     <modules>
         <module>commons-dto</module>
+        <module>commons-utils</module>
     </modules>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
 

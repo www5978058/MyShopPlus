@@ -22,7 +22,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
         <!-- Commons -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>

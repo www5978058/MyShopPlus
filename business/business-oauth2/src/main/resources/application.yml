@@ -27,7 +27,7 @@ spring:
       connection-test-query: SELECT 1
 dubbo:
   scan:
-    base-packages: com.wzh.myshop.plus.business.oauth2.config
+    base-packages: com.wzh.myshop.plus.business.oauth2.service
   protocol:
     name: dubbo
     port: -1

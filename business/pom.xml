@@ -15,12 +15,17 @@
     <modules>
         <module>business-reg</module>
         <module>business-oauth2</module>
+        <module>business-profile</module>
     </modules>
     <dependencies>
         <!-- Spring Cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <!-- Commons -->
         <dependency>
@@ -31,9 +36,20 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
         </dependency>
+        <!-- Project -->
         <dependency>
             <groupId>com.wzh.myshop.plus</groupId>
             <artifactId>commons-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wzh.myshop.plus</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wzh.myshop.plus</groupId>
+            <artifactId>config-feign</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

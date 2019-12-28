@@ -1,8 +1,10 @@
 package com.wzh.myshop.plus.business.oauth2.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 登录参数
@@ -11,6 +13,9 @@ import java.io.Serializable;
  */
 @Data
 public class LoginParam implements Serializable {
+    private static final long serialVersionUID = -53612472199683575L;
     private String username;
     private String password;
+    @DateTimeFormat(pattern = "yyyy")
+    private Date time;
 }

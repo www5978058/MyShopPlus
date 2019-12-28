@@ -40,18 +40,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
-
-        <!-- Spring Cloud Alibaba -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
-        <!-- commoms -->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
         <!-- Projects -->
         <dependency>
             <groupId>com.wzh.myshop.plus</groupId>
@@ -60,7 +48,7 @@
         </dependency>
         <dependency>
             <groupId>com.wzh.myshop.plus</groupId>
-            <artifactId>commons-utils</artifactId>
+            <artifactId>business-profile-feign</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

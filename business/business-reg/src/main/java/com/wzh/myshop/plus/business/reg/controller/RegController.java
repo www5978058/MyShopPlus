@@ -8,7 +8,6 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,6 @@ import javax.validation.Valid;
  * @date 2019/11/14 - 14:49
  */
 @Validated
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(value = "reg")
 public class RegController {

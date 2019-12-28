@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Data
 @Accessors(chain = true)
 public class LoginInfo implements Serializable {
+    private static final long serialVersionUID = 1276490910821899760L;
     private String name;
     private String avatar;
 }

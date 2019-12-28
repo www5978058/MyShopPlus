@@ -18,8 +18,10 @@
     <modules>
         <module>dependencies</module>
         <module>commons</module>
+        <module>config</module>
         <module>provider</module>
         <module>business</module>
+        <module>gateway</module>
     </modules>
 
     <properties>

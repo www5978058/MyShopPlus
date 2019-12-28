@@ -13,8 +13,8 @@
         <feign-okhttp.version>10.3.0</feign-okhttp.version>
 
         <!-- Native cloud-->
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
-        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <dubbo-serialization-kryo.version>2.7.1</dubbo-serialization-kryo.version>
         <!-- Spring Boot Settings -->
         <spring-boot-tk-mybatis.version>2.1.4</spring-boot-tk-mybatis.version>
@@ -31,7 +31,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
+                <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>

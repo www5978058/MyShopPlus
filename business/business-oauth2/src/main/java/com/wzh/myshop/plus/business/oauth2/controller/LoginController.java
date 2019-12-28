@@ -3,13 +3,18 @@ package com.wzh.myshop.plus.business.oauth2.controller;
 import com.google.common.collect.Maps;
 import com.wzh.myshop.plus.business.oauth2.dto.LoginInfo;
 import com.wzh.myshop.plus.business.oauth2.dto.LoginParam;
+import com.wzh.myshop.plus.business.profile.feign.ProfileFeign;
 import com.wzh.myshop.plus.commons.dto.CodeMessage;
 import com.wzh.myshop.plus.commons.dto.ResponseResult;
 import com.wzh.myshop.plus.commons.utils.MapperUtils;
 import com.wzh.myshop.plus.commons.utils.OkHttpClientUtil;
+import com.wzh.myshop.plus.provider.admin.api.domain.UmsAdmin;
+import com.wzh.myshop.plus.provider.admin.api.serivce.UmsAdminService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +22,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +36,6 @@ import java.util.Objects;
  * @author wzh
  * @date 2019/11/15 - 10:36
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class LoginController {
     private static final String URL_OAUTH_TOKEN = "http://localhost:9001/oauth/token";
@@ -49,6 +52,10 @@ public class LoginController {
     private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     TokenStore tokenStore;
+    @Autowired
+    ProfileFeign profileFeign;
+    @Reference(version = "1.0.0")
+    UmsAdminService umsAdminService;
 
     @PostMapping("/user/login")
     public ResponseResult<Map<String,Object>> login(@RequestBody LoginParam loginParam){
@@ -74,13 +81,17 @@ public class LoginController {
     }
 
     @GetMapping("/user/info")
-    public ResponseResult<LoginInfo> info(){
+    @PreAuthorize("hasRole('USER')")
+    public ResponseResult<LoginInfo> info() throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginInfo loginInfo = new LoginInfo().setName(authentication.getName());
+        String info = profileFeign.info(authentication.getName());
+        UmsAdmin umsAdmin = MapperUtils.json2pojoByTree(info, "data", UmsAdmin.class);
+        LoginInfo loginInfo = new LoginInfo().setName(umsAdmin.getUsername()).setAvatar(umsAdmin.getIcon());
         return new ResponseResult<>(CodeMessage.LOGIN_SUCCESS.getCode(),"获取信息成功",loginInfo);
     }
 
     @PostMapping("/user/logout")
+    @PreAuthorize("hasRole('USER')")
     public ResponseResult<Void> logout(HttpServletRequest request){
         String token = request.getParameter("access_token");
         OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);

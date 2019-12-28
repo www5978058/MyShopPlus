@@ -14,7 +14,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 /**
- * 认证服务器
  * @author wzh
  * @date 2019/11/14 - 15:50
  */
@@ -27,7 +26,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      * 注入用于支持 password 模式
      */
     @Autowired
-    private AuthenticationManager authenticationManagerBean;
+    private AuthenticationManager authenticationManager;
 
     @Bean
     public TokenStore tokenStore(){
@@ -38,7 +37,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 // 用于支持密码模式
-                .authenticationManager(authenticationManagerBean)
+                .authenticationManager(authenticationManager)
                 .tokenStore(tokenStore());
     }
     @Override

@@ -1,9 +1,14 @@
 package com.wzh.myshop.plus.provider.admin.api.domain;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
 @author wzh
@@ -21,7 +26,8 @@ public class UmsAdminLoginLog implements Serializable {
     private Long adminId;
 
     @Column(name = "create_time")
-    private LocalDateTime createTime;
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
     @Column(name = "ip")
     private String ip;

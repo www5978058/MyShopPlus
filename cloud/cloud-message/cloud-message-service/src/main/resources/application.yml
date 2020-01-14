@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: cloud-message
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.100:8848
+    stream:
+      rocketmq:
+        binder:
+          # RocketMQ 服务器地址
+          name-server: 192.168.1.102:9876
+      bindings:
+        # 这里是个 Map 类型参数，{} 为 YAML 中 Map 的行内写法
+        admin-login-log-topic: {destination: admin-login-log-topic, content-type: application/json}
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+dubbo:
+  scan:
+    base-packages: com.wzh.myshop.plus.cloud.producer
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: spring-cloud://192.168.1.100
+server:
+  port: 10001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9001/oauth/token
+      user-authorization-uri: http://localhost:9001/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9001/oauth/check_token

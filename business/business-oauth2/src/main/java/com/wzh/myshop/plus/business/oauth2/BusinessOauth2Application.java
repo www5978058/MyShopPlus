@@ -13,7 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableDiscoveryClient
 @EnableFeignClients(clients = {ProfileFeign.class})
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.wzh.myshop.plus.business")
 public class BusinessOauth2Application {
     public static void main(String[] args) {
         SpringApplication.run(BusinessOauth2Application.class,args);

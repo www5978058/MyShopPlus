@@ -11,6 +11,7 @@
         <!-- commons -->
         <okhttp3.version>4.1.0</okhttp3.version>
         <feign-okhttp.version>10.3.0</feign-okhttp.version>
+        <UserAgentUtils.version>1.21</UserAgentUtils.version>
 
         <!-- Native cloud-->
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
@@ -19,6 +20,9 @@
         <!-- Spring Boot Settings -->
         <spring-boot-tk-mybatis.version>2.1.4</spring-boot-tk-mybatis.version>
         <mybatis-spring-boot-starter.version>2.1.0</mybatis-spring-boot-starter.version>
+
+        <!-- OSS -->
+        <com.aliyun.oss>3.8.0</com.aliyun.oss>
     </properties>
 
     <dependencyManagement>
@@ -61,6 +65,16 @@
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-okhttp</artifactId>
                 <version>${feign-okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${com.aliyun.oss}</version>
+            </dependency>
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${UserAgentUtils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

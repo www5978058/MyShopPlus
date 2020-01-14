@@ -14,6 +14,7 @@
     <modules>
         <module>commons-dto</module>
         <module>commons-utils</module>
+        <module>commons-provider</module>
     </modules>
     <dependencies>
         <dependency>

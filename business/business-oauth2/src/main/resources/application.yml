@@ -25,6 +25,10 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+  redis:
+    host: localhost
+    password: 123456
+    port: 6379
 dubbo:
   scan:
     base-packages: com.wzh.myshop.plus.business.oauth2.service
@@ -40,7 +44,8 @@ feign:
     enabled: true
   httpclient:
     enabled: false
-
+  sentinel:
+    enabled: true
 server:
   port: 9001
 

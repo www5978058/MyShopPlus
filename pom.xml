@@ -22,6 +22,8 @@
         <module>provider</module>
         <module>business</module>
         <module>gateway</module>
+        <module>cloud</module>
+        <module>message</module>
     </modules>
 
     <properties>
